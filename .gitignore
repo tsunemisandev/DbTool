@@ -1,0 +1,17 @@
+# Gradle
+.gradle/
+**/build/
+**/out/
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# OS / misc
+.DS_Store
+*.log
