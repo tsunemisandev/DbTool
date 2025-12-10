@@ -237,13 +237,6 @@ class LogicalNameSearchPanel : JPanel(BorderLayout()) {
         val colsToCopy = if (selectedCols.isNotEmpty()) selectedCols else (0 until tableModel.columnCount).toList().toIntArray()
         val rowsToCopy = if (selectedRows.isNotEmpty()) selectedRows else (0 until tableModel.rowCount).toList().toIntArray()
 
-        // headers
-        colsToCopy.forEachIndexed { idx, c ->
-            if (idx > 0) sb.append('\t')
-            sb.append(tableModel.getColumnName(c))
-        }
-        sb.append('\n')
-        // data
         rowsToCopy.forEach { r ->
             colsToCopy.forEachIndexed { idx, c ->
                 if (idx > 0) sb.append('\t')

@@ -56,6 +56,7 @@ class DataClassGeneratorPanel : JPanel(BorderLayout()) {
             return
         }
         val lines = raw.lines().filter { it.isNotBlank() }
+        val firstLine = lines.firstOrNull()?.trim().orEmpty()
         if (lines.isEmpty()) {
             JOptionPane.showMessageDialog(this, "有効な行がありません。", "Info", JOptionPane.INFORMATION_MESSAGE)
             return
@@ -64,7 +65,7 @@ class DataClassGeneratorPanel : JPanel(BorderLayout()) {
         var headers = splitter(lines.first()).map { it.trim() }.filter { it.isNotEmpty() }
 
         // If it looks like a SELECT statement pasted (not tabular result), parse the select list.
-        if (headers.size == 1 && headers.first().startsWith("select", ignoreCase = true)) {
+        if (firstLine.startsWith("select", ignoreCase = true)) {
             headers = parseSelectList(raw)
         }
         if (headers.isEmpty()) {
